@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio — AI/ML Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,600&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#faf9f6;--bg2:#f3f1eb;--white:#ffffff;--ink:#111010;--ink2:#3a3830;--muted:#8a8070;--border:#e0dbd0;--amber:#c8860a;--amber-lt:#fdf3e0;--amber-md:#f0c060;--nav-h:64px;--max:1080px;--r:3px}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);background:rgba(250,249,246,.93);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1.25rem,5vw,3rem)}
+.nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1rem;letter-spacing:-.03em;color:var(--ink);text-decoration:none}
+.nav-logo span{color:var(--amber)}
+.nav-links{display:flex;list-style:none;gap:clamp(1rem,3vw,2.5rem)}
+.nav-links a{font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .15s}
+.nav-links a:hover{color:var(--amber)}
+.nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;background:none;border:none;cursor:pointer;padding:4px}
+.nav-toggle span{display:block;width:22px;height:1.5px;background:var(--ink);border-radius:2px;transition:all .25s;transform-origin:center}
+.nav-toggle.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.nav-toggle.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.nav-toggle.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.nav-drawer{display:none;position:fixed;top:var(--nav-h);left:0;right:0;background:var(--white);border-bottom:1px solid var(--border);padding:1.5rem clamp(1.25rem,5vw,3rem);z-index:99;flex-direction:column;gap:0}
+.nav-drawer.open{display:flex}
+.nav-drawer a{font-family:'DM Mono',monospace;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2);text-decoration:none;padding:.9rem 0;border-bottom:1px solid var(--border);transition:color .15s}
+.nav-drawer a:last-child{border-bottom:none}
+.nav-drawer a:hover{color:var(--amber)}
+.container{width:100%;max-width:var(--max);margin:0 auto;padding:0 clamp(1.25rem,5vw,3rem)}
+section{padding:clamp(3.5rem,8vw,5.5rem) 0}
+section+section{border-top:1px solid var(--border)}
+.eyebrow{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--amber);margin-bottom:.6rem;display:flex;align-items:center;gap:.6rem}
+.eyebrow::after{content:'';width:32px;height:1px;background:var(--amber-md)}
+h2.st{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-.03em;line-height:1.15;margin-bottom:clamp(1.5rem,4vw,2.5rem)}
+#hero{padding-top:calc(var(--nav-h) + clamp(3rem,8vw,5rem));padding-bottom:clamp(3rem,8vw,5rem)}
+.hero-inner{display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:start}
+.hero-eyebrow{font-family:'DM Mono',monospace;font-size:.72rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-bottom:1.2rem}
+h1.hn{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(2.4rem,6vw,4.2rem);letter-spacing:-.04em;line-height:1.05;margin-bottom:.5rem}
+h1.hn em{font-style:italic;color:var(--amber)}
+.hero-tag{font-family:'Fraunces',serif;font-weight:300;font-style:italic;font-size:clamp(.95rem,2vw,1.15rem);color:var(--muted);margin-bottom:1.8rem}
+.hero-bio{font-size:clamp(.87rem,1.5vw,.95rem);color:var(--ink2);line-height:1.85;max-width:520px;margin-bottom:2.5rem}
+.hero-ctas{display:flex;gap:.75rem;flex-wrap:wrap}
+.hero-svg{width:clamp(110px,16vw,180px);height:clamp(110px,16vw,180px);flex-shrink:0;opacity:.8}
+.btn{display:inline-flex;align-items:center;gap:.4rem;font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.07em;text-transform:uppercase;padding:.75rem 1.4rem;border-radius:var(--r);text-decoration:none;border:1px solid transparent;cursor:pointer;transition:all .18s;white-space:nowrap}
+.btn-a{background:var(--amber);color:#fff;border-color:var(--amber)}
+.btn-a:hover{background:#a06c06;border-color:#a06c06;transform:translateY(-1px)}
+.btn-g{background:transparent;color:var(--ink2);border-color:var(--border)}
+.btn-g:hover{border-color:var(--amber);color:var(--amber);transform:translateY(-1px)}
+.email-hint{font-size:.85rem;color:#f8f4ea;margin-top:.9rem;opacity:.9;transition:opacity .2s ease}
+#stats{background:var(--ink);padding:0;border-top:none}
+.stats-grid{display:grid;grid-template-columns:repeat(6,1fr);max-width:var(--max);margin:0 auto}
+.sc{padding:clamp(1.2rem,3vw,2rem) clamp(1rem,2vw,1.5rem);border-right:1px solid #ffffff10;transition:background .2s}
+.sc:last-child{border-right:none}
+.sc:hover{background:#ffffff06}
+.sv{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.2rem,2.5vw,1.8rem);letter-spacing:-.04em;color:var(--amber-md);line-height:1;margin-bottom:.35rem}
+.sl{font-size:.7rem;color:#ffffff55;line-height:1.4}
+.case-list{display:flex;flex-direction:column;gap:1rem}
+.case{background:var(--white);border:1px solid var(--border);border-radius:4px;overflow:hidden;transition:box-shadow .2s,transform .2s}
+.case:hover{box-shadow:0 6px 28px rgba(0,0,0,.07);transform:translateY(-2px)}
+.ch{padding:clamp(1.2rem,3vw,1.8rem) clamp(1.2rem,3vw,2rem);border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap}
+.cm{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;margin-bottom:.5rem}
+.ct{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;padding:.22rem .6rem;border-radius:2px}
+.t-ai{background:#fdf3e0;color:#8a5a00}
+.t-web{background:#e8f4f0;color:#1a6b50}
+.t-iot{background:#fce8e8;color:#8a2020}
+.cb{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;padding:.22rem .6rem;border-radius:2px;background:var(--ink);color:var(--amber-md)}
+.ctitle{font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(.95rem,2vw,1.15rem);letter-spacing:-.02em;color:var(--ink);line-height:1.3}
+.csub{font-size:.78rem;color:var(--muted);font-style:italic;margin-top:.15rem}
+.ca{display:flex;gap:.45rem;flex-shrink:0;flex-wrap:wrap}
+.bx{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;padding:.4rem .85rem;border-radius:var(--r);text-decoration:none;border:1px solid var(--border);color:var(--muted);background:transparent;transition:all .15s;white-space:nowrap;cursor:pointer;display:inline-flex;align-items:center;gap:.35rem}
+.bx:hover{border-color:var(--amber);color:var(--amber);background:var(--amber-lt)}
+.bx.gh:hover{border-color:var(--ink);color:var(--ink);background:var(--bg2)}
+.cc{display:grid;grid-template-columns:repeat(3,1fr)}
+.ccol{padding:clamp(1rem,2.5vw,1.5rem) clamp(1.2rem,3vw,2rem);border-right:1px solid var(--border)}
+.ccol:last-child{border-right:none}
+.cll{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
+.ccol p{font-size:.82rem;color:var(--ink2);line-height:1.7}
+.cf{padding:.8rem clamp(1.2rem,3vw,2rem);background:var(--bg);border-top:1px solid var(--border);display:flex;flex-wrap:wrap;gap:.35rem}
+.pill{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.04em;padding:.18rem .55rem;border:1px solid var(--border);border-radius:2px;color:var(--muted);background:var(--white)}
+#skills{background:var(--bg2)}
+.sg{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:4px;overflow:hidden}
+.sb{background:var(--white);padding:clamp(1.2rem,3vw,1.8rem) clamp(1.2rem,3vw,2rem)}
+.sbl{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);margin-bottom:1rem;padding-bottom:.7rem;border-bottom:1px solid var(--border)}
+.chips{display:flex;flex-wrap:wrap;gap:.4rem}
+.chip{font-size:.78rem;padding:.32rem .8rem;background:var(--bg2);border:1px solid var(--border);border-radius:2px;color:var(--ink2);transition:all .15s;cursor:default}
+.chip:hover{background:var(--amber-lt);border-color:var(--amber-md);color:var(--amber)}
+.al{display:flex;flex-direction:column;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:4px;overflow:hidden}
+.ar{display:grid;grid-template-columns:120px 1fr;background:var(--white);transition:background .15s}
+.ar:hover{background:var(--bg)}
+.ail{padding:clamp(1rem,2.5vw,1.4rem) 1.2rem;border-right:1px solid var(--border);display:flex;flex-direction:column;justify-content:center;gap:.2rem}
+.at{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.1em;text-transform:uppercase}
+.at-r{color:#1a6b50}.at-h{color:var(--amber)}.at-e{color:#1a3a8a}.at-c{color:#8a2020}.at-l{color:var(--ink2)}
+.am{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.1rem,2.5vw,1.4rem);letter-spacing:-.04em;color:var(--ink);line-height:1}
+.air{padding:clamp(1rem,2.5vw,1.4rem) clamp(1.2rem,3vw,1.8rem)}
+.atitle{font-family:'Syne',sans-serif;font-weight:600;font-size:clamp(.82rem,1.8vw,.92rem);letter-spacing:-.01em;color:var(--ink);margin-bottom:.2rem;line-height:1.35}
+.adesc{font-size:.76rem;color:var(--muted);line-height:1.6}
+#languages{background:var(--bg2)}
+.lr{display:grid;grid-template-columns:110px 90px 1fr auto;align-items:center;gap:1.2rem;padding:1.1rem 0;border-bottom:1px solid var(--border)}
+.lr:last-of-type{border-bottom:none}
+.ln{font-family:'Syne',sans-serif;font-weight:600;font-size:.95rem;color:var(--ink)}
+.ll{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.lbw{height:4px;background:var(--border);border-radius:2px;overflow:hidden}
+.lb{height:100%;background:linear-gradient(90deg,var(--amber),var(--amber-md));border-radius:2px}
+.lbadge{font-family:'DM Mono',monospace;font-size:.62rem;padding:.22rem .6rem;border-radius:2px;white-space:nowrap}
+.lb-n{background:var(--amber-lt);color:var(--amber)}
+.lb-f{background:#e8f4f0;color:#1a6b50}
+.lb-l{background:#f0ebfa;color:#5a1a8a}
+.lnote{font-size:.78rem;color:var(--muted);font-style:italic;margin-top:1.2rem}
+#contact{background:var(--ink);color:var(--white)}
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,6vw,5rem);align-items:start}
+.ch2{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-.04em;line-height:1.1;margin-bottom:1rem}
+.ch2 em{font-style:italic;color:var(--amber-md)}
+.csub{font-size:.85rem;color:#ffffff55;line-height:1.8;margin-bottom:2rem}
+.clink{display:flex;flex-direction:column;gap:.15rem;padding:1.1rem 0;border-bottom:1px solid #ffffff10;text-decoration:none;color:var(--white);transition:all .15s}
+.clink:hover .clt{color:var(--amber-md)}
+.cll2{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:#ffffff35}
+.clt{font-size:.88rem;transition:color .15s}
+footer{background:var(--ink);border-top:1px solid #ffffff10;padding:1.4rem clamp(1.25rem,5vw,3rem);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem}
+footer span{font-family:'DM Mono',monospace;font-size:.65rem;color:#ffffff25;letter-spacing:.06em}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .5s ease,transform .5s ease}
+.reveal.vis{opacity:1;transform:none}
+.gi svg{width:11px;height:11px}
+@media(max-width:768px){.nav-links{display:none}.nav-toggle{display:flex}}
+@media(max-width:600px){.hero-inner{grid-template-columns:1fr}.hero-svg{display:none}}
+@media(max-width:900px){.stats-grid{grid-template-columns:repeat(3,1fr)}.sc:nth-child(3){border-right:none}.sc:nth-child(4),.sc:nth-child(5),.sc:nth-child(6){border-top:1px solid #ffffff10}}
+@media(max-width:500px){.stats-grid{grid-template-columns:repeat(2,1fr)}.sc{border-right:1px solid #ffffff10!important;border-top:1px solid #ffffff10}.sc:nth-child(1),.sc:nth-child(2){border-top:none}.sc:nth-child(odd){border-right:none!important}}
+@media(max-width:720px){.cc{grid-template-columns:1fr}.ccol{border-right:none!important;border-bottom:1px solid var(--border)}.ccol:last-child{border-bottom:none}.ch{flex-direction:column}.ca{width:100%}}
+@media(max-width:600px){.sg{grid-template-columns:1fr}}
+@media(max-width:540px){.ar{grid-template-columns:80px 1fr}.ail{padding:.8rem .75rem}.am{font-size:1rem}}
+@media(max-width:600px){.lr{grid-template-columns:1fr auto;grid-template-rows:auto auto;gap:.5rem 1rem}.ll{display:none}.lbw{grid-column:1 / -1}}
+@media(max-width:680px){.cg{grid-template-columns:1fr;gap:2.5rem}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="#hero" class="nav-logo">dev<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#achievements">Achievements</a></li>
+    <li><a href="#languages">Languages</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-toggle" aria-label="Menu" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-drawer" id="drawer">
+  <a href="#projects" onclick="closeNav()">Projects</a>
+  <a href="#skills" onclick="closeNav()">Skills</a>
+  <a href="#achievements" onclick="closeNav()">Achievements</a>
+  <a href="#languages" onclick="closeNav()">Languages</a>
+  <a href="#contact" onclick="closeNav()">Contact</a>
+</div>
+
+<section id="hero">
+<div class="container">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">6th Semester · CSE (AI/ML) · B.E. · Coimbatore</div>
+      <h1 class="hn">Building AI that<br><em>actually works.</em></h1>
+      <p class="hero-tag">Engineer · Researcher · Hackathon Winner</p>
+      <p class="hero-bio">I build systems at the intersection of human experience and machine intelligence — from emotion-aware voice diaries to satellite imagery deep learning. IEEE published. GATE qualified. Google Gemini Ambassador.</p>
+      <div class="hero-ctas">
+        <a href="#projects" class="btn btn-a">View My Work →</a>
+        <a href="#contact" class="btn btn-g">Get in Touch</a>
+        <a href="https://github.com/Aruna168" target="_blank" class="btn btn-g">GitHub ↗</a>
+      </div>
+    </div>
+    <svg class="hero-svg" viewBox="0 0 180 180" fill="none" aria-hidden="true">
+      <circle cx="90" cy="30" r="6" fill="#c8860a" opacity=".9"/>
+      <circle cx="40" cy="75" r="5" fill="#c8860a" opacity=".6"/>
+      <circle cx="140" cy="75" r="5" fill="#c8860a" opacity=".6"/>
+      <circle cx="60" cy="125" r="5" fill="#c8860a" opacity=".5"/>
+      <circle cx="120" cy="125" r="5" fill="#c8860a" opacity=".5"/>
+      <circle cx="90" cy="155" r="7" fill="#c8860a" opacity=".85"/>
+      <circle cx="65" cy="95" r="4" fill="#e0a030" opacity=".45"/>
+      <circle cx="90" cy="88" r="4" fill="#e0a030" opacity=".45"/>
+      <circle cx="115" cy="95" r="4" fill="#e0a030" opacity=".45"/>
+      <line x1="90" y1="36" x2="40" y2="70" stroke="#c8860a" stroke-width=".8" opacity=".22"/>
+      <line x1="90" y1="36" x2="140" y2="70" stroke="#c8860a" stroke-width=".8" opacity=".22"/>
+      <line x1="90" y1="36" x2="65" y2="91" stroke="#c8860a" stroke-width=".8" opacity=".18"/>
+      <line x1="90" y1="36" x2="90" y2="84" stroke="#c8860a" stroke-width="1" opacity=".28"/>
+      <line x1="90" y1="36" x2="115" y2="91" stroke="#c8860a" stroke-width=".8" opacity=".18"/>
+      <line x1="40" y1="80" x2="65" y2="91" stroke="#c8860a" stroke-width=".8" opacity=".18"/>
+      <line x1="40" y1="80" x2="60" y2="120" stroke="#c8860a" stroke-width=".8" opacity=".18"/>
+      <line x1="140" y1="80" x2="115" y2="91" stroke="#c8860a" stroke-width=".8" opacity=".18"/>
+      <line x1="140" y1="80" x2="120" y2="120" stroke="#c8860a" stroke-width=".8" opacity=".18"/>
+      <line x1="65" y1="99" x2="60" y2="120" stroke="#c8860a" stroke-width=".8" opacity=".18"/>
+      <line x1="65" y1="99" x2="90" y2="148" stroke="#c8860a" stroke-width=".8" opacity=".13"/>
+      <line x1="90" y1="92" x2="90" y2="148" stroke="#c8860a" stroke-width="1" opacity=".22"/>
+      <line x1="115" y1="99" x2="120" y2="120" stroke="#c8860a" stroke-width=".8" opacity=".18"/>
+      <line x1="115" y1="99" x2="90" y2="148" stroke="#c8860a" stroke-width=".8" opacity=".13"/>
+      <line x1="60" y1="125" x2="90" y2="148" stroke="#c8860a" stroke-width=".8" opacity=".18"/>
+      <line x1="120" y1="125" x2="90" y2="148" stroke="#c8860a" stroke-width=".8" opacity=".18"/>
+      <circle cx="90" cy="90" r="72" stroke="#c8860a" stroke-width=".5" opacity=".08" stroke-dasharray="4 6"/>
+      <circle cx="90" cy="90" r="50" stroke="#c8860a" stroke-width=".5" opacity=".06" stroke-dasharray="3 8"/>
+    </svg>
+  </div>
+</div>
+</section>
+
+<section id="stats"><div class="stats-grid">
+  <div class="sc"><div class="sv">IEEE</div><div class="sl">Paper Published<br>ICECA 2025</div></div>
+  <div class="sc"><div class="sv">🏆 1st</div><div class="sl">SNS AI/ML Hackathon<br>₹5,000 Prize</div></div>
+  <div class="sc"><div class="sv">GATE</div><div class="sl">Qualified<br>Undergrad Level</div></div>
+  <div class="sc"><div class="sv">8+</div><div class="sl">Projects<br>Shipped</div></div>
+  <div class="sc"><div class="sv">3+</div><div class="sl">Hackathons<br>Competed</div></div>
+  <div class="sc"><div class="sv">30h</div><div class="sl">Hackathon<br>Organized</div></div>
+</div></section>
+
+<section id="projects"><div class="container">
+  <div class="eyebrow">01 — Work</div>
+  <h2 class="st">Case Studies</h2>
+  <div class="case-list">
+
+  <div class="case reveal"><div class="ch"><div><div class="cm"><span class="ct t-ai">RAG · NLP</span><span class="cb">🏆 1st Place · ₹5,000</span></div><div class="ctitle">MedRAG — Medical AI Assistant</div><div class="csub">SNS College of Technology · 8-hour Hackathon</div></div><div class="ca"><a href="https://github.com/Aruna168/MedRAG-Assistant" target="_blank" class="bx gh gi"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>GitHub</a><a href="mailto:your@email.com?subject=MedRAG%20Demo" class="bx">Demo →</a></div></div><div class="cc"><div class="ccol"><div class="cll">Problem</div><p>Medical data is scattered and unstructured. LLMs hallucinate on medical facts without reliable grounding.</p></div><div class="ccol"><div class="cll">What I Built</div><p>A RAG pipeline grounding LLM responses in verified medical documents — fast, accurate, hallucination-resistant.</p></div><div class="ccol"><div class="cll">Result</div><p>1st place + ₹5,000 at SNS 8-hour hackathon. Iterated from a prototype built at Hack-A-Cure, VIT Chennai.</p></div></div><div class="cf"><span class="pill">Python</span><span class="pill">RAG</span><span class="pill">LLM</span><span class="pill">Vector Search</span><span class="pill">Medical AI</span></div></div>
+
+  <div class="case reveal"><div class="ch"><div><div class="cm"><span class="ct t-ai">AI · Mobile</span><span class="cb">IEEE Published · ICECA 2025</span></div><div class="ctitle">Voice-Based Emotion-Aware Diary</div><div class="csub">Privacy-first, fully offline journaling app</div></div><div class="ca"><a href="https://github.com/Aruna168/Speak2Journal" target="_blank" class="bx gh gi"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>GitHub</a><a href="mailto:your@email.com?subject=Voice%20Diary%20Demo" class="bx">Demo →</a></div></div><div class="cc"><div class="ccol"><div class="cll">Problem</div><p>Journaling apps send data to the cloud. No existing voice tool runs offline and understands emotional context.</p></div><div class="ccol"><div class="cll">What I Built</div><p>Offline-first Kotlin app that transcribes speech locally, detects emotional tone, and reflects it through the journaling experience.</p></div><div class="ccol"><div class="cll">Result</div><p>IEEE ICECA 2025 published. Fully on-device NLP — zero data leaves the phone at any point.</p></div></div><div class="cf"><span class="pill">Kotlin</span><span class="pill">Android</span><span class="pill">Speech-to-Text</span><span class="pill">Emotion Detection</span><span class="pill">Offline AI</span></div></div>
+
+  <div class="case reveal"><div class="ch"><div><div class="cm"><span class="ct t-ai">Deep Learning · CV</span><span class="cb">Bharatiya Antariksh Hackathon</span></div><div class="ctitle">Dual-Image Satellite Super Resolution</div><div class="csub">Attention-based fusion for satellite imagery enhancement</div></div><div class="ca"><a href="https://github.com/Aruna168/Antariksh-DualFusion" target="_blank" class="bx gh gi"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>GitHub</a><a href="mailto:your@email.com?subject=Satellite%20SR" class="bx">Demo →</a></div></div><div class="cc"><div class="ccol"><div class="cll">Problem</div><p>Single-image SR loses spatial detail recoverable from paired satellite shots. Supervision data is rarely available at runtime.</p></div><div class="ccol"><div class="cll">What I Built</div><p>Dual-image fusion deep learning model with attention architecture in PyTorch. No ground truth needed at runtime. Streamlit demo.</p></div><div class="ccol"><div class="cll">Result</div><p>Handles real-world satellite pairs without paired supervision. Built end-to-end for Bharatiya Antariksh Hackathon.</p></div></div><div class="cf"><span class="pill">PyTorch</span><span class="pill">Attention</span><span class="pill">Streamlit</span><span class="pill">Computer Vision</span><span class="pill">Remote Sensing</span></div></div>
+
+  <div class="case reveal"><div class="ch"><div><div class="cm"><span class="ct t-ai">ML · NLP</span></div><div class="ctitle">Spam Email Detection System</div><div class="csub">Efficient classifier with persistent model optimization</div></div><div class="ca"><a href="https://github.com/Aruna168/Email-spam-detection" target="_blank" class="bx gh gi"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>GitHub</a><a href="mailto:your@email.com?subject=Spam%20Detection" class="bx">Demo →</a></div></div><div class="cc"><div class="ccol"><div class="cll">Problem</div><p>Classifiers that retrain on every run are too slow for deployment. Preprocessing overhead adds unnecessary latency.</p></div><div class="ccol"><div class="cll">What I Built</div><p>TF-IDF pipeline with optimized preprocessing that persists the trained model — inference runs without retraining.</p></div><div class="ccol"><div class="cll">Result</div><p>Fast, production-ready inference designed with real deployment constraints in mind from the start.</p></div></div><div class="cf"><span class="pill">Python</span><span class="pill">TF-IDF</span><span class="pill">Scikit-learn</span><span class="pill">NLP</span></div></div>
+
+  <div class="case reveal"><div class="ch"><div><div class="cm"><span class="ct t-web">Full Stack</span></div><div class="ctitle">Movie Ticket Booking System</div><div class="csub">Complete end-to-end platform</div></div><div class="ca"><a href="https://github.com/Aruna168/Movie-Ticket-Booking" target="_blank" class="bx gh gi"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>GitHub</a><a href="mailto:your@email.com?subject=Movie%20Booking" class="bx">Demo →</a></div></div><div class="cc"><div class="ccol"><div class="cll">Problem</div><p>Needed a real full-stack system covering seat selection, user accounts, and booking history.</p></div><div class="ccol"><div class="cll">What I Built</div><p>Full-stack platform with user dashboard, booking flow, and history tracking. Frontend to backend on XAMPP.</p></div><div class="ccol"><div class="cll">Result</div><p>Working system demonstrating full-stack capability across frontend, backend logic, and relational DB design.</p></div></div><div class="cf"><span class="pill">PHP</span><span class="pill">MySQL</span><span class="pill">XAMPP</span><span class="pill">HTML/CSS/JS</span></div></div>
+
+  <div class="case reveal"><div class="ch"><div><div class="cm"><span class="ct t-web">Flutter · In Progress</span></div><div class="ctitle">No-Code Website Builder App</div><div class="csub">Mobile-first website creation for everyone</div></div><div class="ca"><a href="https://github.com/Aruna168/No-code-website" target="_blank" class="bx gh gi"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>GitHub</a><a href="mailto:your@email.com?subject=No%20Code%20Builder" class="bx">WIP →</a></div></div><div class="cc"><div class="ccol"><div class="cll">Problem</div><p>No-code tools are desktop-only and complex. Building a site from a phone is still inaccessible for most people.</p></div><div class="ccol"><div class="cll">What I'm Building</div><p>Flutter mobile app for drag-and-drop website creation with accessibility-first UI/UX design throughout.</p></div><div class="ccol"><div class="cll">Status</div><p>Actively in development. Core layout engine and component system in progress.</p></div></div><div class="cf"><span class="pill">Flutter</span><span class="pill">Dart</span><span class="pill">UI/UX</span><span class="pill">Accessibility</span></div></div>
+
+  <div class="case reveal"><div class="ch"><div><div class="cm"><span class="ct t-iot">IoT · Edge Intelligence</span></div><div class="ctitle">Smart Floating Flood Monitoring System</div><div class="csub">Multi-sensor flood risk detection with GSM alerts</div></div><div class="ca"><a href="https://github.com/yourusername/flood-monitoring" target="_blank" class="bx gh gi"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>GitHub</a><a href="mailto:arunarayan06@gmail.com?subject=Flood%20Monitoring%20Demo" class="bx">Discuss →</a></div></div><div class="cc"><div class="ccol"><div class="cll">Problem</div><p>Single-sensor flood monitors miss hidden risks and produce false alarms in remote deployments.</p></div><div class="ccol"><div class="cll">What I Built</div><p>TTGO T-Call float combining water pressure, turbidity, and TDS sensor fusion into a Flood Risk Score, plus GSM alerting for warning and danger states.</p></div><div class="ccol"><div class="cll">Result</div><p>Robust edge monitoring design for real-time flood awareness. Ideal for remote sites with low-connectivity GSM reporting and low-power deployment.</p></div></div><div class="cf"><span class="pill">Arduino / C++</span><span class="pill">IoT</span><span class="pill">Sensor Fusion</span><span class="pill">GSM SMS</span><span class="pill">Flood Risk</span></div></div>
+
+  <div class="case reveal"><div class="ch"><div><div class="cm"><span class="ct t-iot">IoT · Concept</span></div><div class="ctitle">AgroSense 2.0 — Biodegradable Soil Patch</div><div class="csub">Zero-waste precision agriculture sensor system</div></div><div class="ca"><a href="mailto:your@email.com?subject=AgroSense%20Concept" class="bx">Discuss →</a></div></div><div class="cc"><div class="ccol"><div class="cll">Problem</div><p>Traditional soil sensors leave hardware waste in fields. Retrieval at scale is costly and impractical for farmers.</p></div><div class="ccol"><div class="cll">The Concept</div><p>Biodegradable sensor patches embedded into soil — monitor conditions in real-time, then decompose naturally. Zero retrieval, zero hardware waste.</p></div><div class="ccol"><div class="cll">Why It Matters</div><p>Enables dense IoT deployment at agricultural scale without the environmental or logistical cost of hardware recovery.</p></div></div><div class="cf"><span class="pill">IoT</span><span class="pill">Biodegradable Hardware</span><span class="pill">AgriTech</span><span class="pill">Sustainable Design</span></div></div>
+
+  </div>
+</div></section>
+
+<section id="skills"><div class="container">
+  <div class="eyebrow">02 — Stack</div>
+  <h2 class="st">Skills & Tools</h2>
+  <div class="sg">
+    <div class="sb reveal"><div class="sbl">AI / ML</div><div class="chips"><span class="chip">PyTorch</span><span class="chip">TF-IDF</span><span class="chip">Scikit-learn</span><span class="chip">RAG</span><span class="chip">NLP</span><span class="chip">Computer Vision</span><span class="chip">Attention Mechanisms</span><span class="chip">Emotion AI</span></div></div>
+    <div class="sb reveal"><div class="sbl">Languages</div><div class="chips"><span class="chip">Python</span><span class="chip">Kotlin</span><span class="chip">Dart</span><span class="chip">PHP</span><span class="chip">C</span><span class="chip">Java</span><span class="chip">JavaScript</span><span class="chip">SQL</span></div></div>
+    <div class="sb reveal"><div class="sbl">Frameworks & Tools</div><div class="chips"><span class="chip">Flutter</span><span class="chip">Android</span><span class="chip">Streamlit</span><span class="chip">XAMPP</span><span class="chip">MySQL</span><span class="chip">Git</span><span class="chip">Gemini API</span></div></div>
+    <div class="sb reveal"><div class="sbl">Domains</div><div class="chips"><span class="chip">Human-Centered AI</span><span class="chip">Voice Interfaces</span><span class="chip">IoT Systems</span><span class="chip">Remote Sensing</span><span class="chip">AgriTech</span><span class="chip">MedTech</span><span class="chip">System Design</span></div></div>
+  </div>
+</div></section>
+
+<section id="achievements"><div class="container">
+  <div class="eyebrow">03 — Recognition</div>
+  <h2 class="st">Achievements</h2>
+  <div class="al">
+    <div class="ar reveal"><div class="ail"><div class="at at-r">Research</div><div class="am">IEEE</div></div><div class="air"><div class="atitle">IEEE Conference Paper — ICECA 2025</div><p class="adesc">"AI-Powered, Privacy-First Emotion-Aware Voice Journaling" — accepted and published at ICECA 2025.</p></div></div>
+    <div class="ar reveal"><div class="ail"><div class="at at-h">Hackathon</div><div class="am">1st</div></div><div class="air"><div class="atitle">1st Place — SNS AI/ML Hackathon, Coimbatore · ₹5,000</div><p class="adesc">Won first place and ₹5,000 cash prize at the 8-hour AI/ML Hackathon at SNS College of Technology with MedRAG.</p></div></div>
+    <div class="ar reveal"><div class="ail"><div class="at at-e">Exam</div><div class="am">GATE</div></div><div class="air"><div class="atitle">GATE Qualified — Undergraduate Level</div><p class="adesc">Cleared the Graduate Aptitude Test in Engineering as an undergraduate — national-level exam for PG admissions and PSU recruitment.</p></div></div>
+    <div class="ar reveal"><div class="ail"><div class="at at-h">Hackathon</div><div class="am">Top 50</div></div><div class="air"><div class="atitle">GreenMind Hackathon — Top 50 / 500+ Teams</div><p class="adesc">Sustainable microgrid and energy optimization project. Ranked in the top 10% of over 500 competing teams.</p></div></div>
+    <div class="ar reveal"><div class="ail"><div class="at at-h">Hackathon</div><div class="am">BAH</div></div><div class="air"><div class="atitle">Bharatiya Antariksh Hackathon — Participant</div><p class="adesc">Built dual-image satellite super-resolution model with PyTorch attention-based architecture.</p></div></div>
+    <div class="ar reveal"><div class="ail"><div class="at at-c">Competition</div><div class="am">2nd ♟</div></div><div class="air"><div class="atitle">Runner-up — Anna University Zonal Chess Tournament</div><p class="adesc">Secured second place at the Anna University Zonal Chess Tournament.</p></div></div>
+    <div class="ar reveal"><div class="ail"><div class="at at-l">Leadership</div><div class="am">MC</div></div><div class="air"><div class="atitle">Master of Ceremony — College Hackathon (30+ hours)</div><p class="adesc">Organized and hosted a 30+ hour hackathon as MC — end-to-end participant coordination, judging, and event management.</p></div></div>
+    <div class="ar reveal"><div class="ail"><div class="at at-c">Award</div><div class="am">2nd</div></div><div class="air"><div class="atitle">2nd Prize — Tamil Speech Competition</div><p class="adesc">Recognized for communication and public speaking in Tamil language.</p></div></div>
+    <div class="ar reveal"><div class="ail"><div class="at at-r">Role</div><div class="am">G</div></div><div class="air"><div class="atitle">Google Gemini Ambassador</div><p class="adesc">Promoting AI literacy, organizing workshops, and representing Google's AI ecosystem on campus.</p></div></div>
+  </div>
+</div></section>
+
+<section id="languages"><div class="container">
+  <div class="eyebrow">04 — Languages</div>
+  <h2 class="st">Human Languages</h2>
+  <div class="lr reveal"><div class="ln">Tamil</div><div class="ll">Native</div><div class="lbw"><div class="lb" style="width:100%"></div></div><span class="lbadge lb-n">Native</span></div>
+  <div class="lr reveal"><div class="ln">English</div><div class="ll">Fluent</div><div class="lbw"><div class="lb" style="width:90%"></div></div><span class="lbadge lb-f">Fluent</span></div>
+  <div class="lr reveal"><div class="ln">German</div><div class="ll">A1 Level</div><div class="lbw"><div class="lb" style="width:18%"></div></div><span class="lbadge lb-l">A1.1 ✓ · A1.2 Done</span></div>
+  <p class="lnote reveal">German: Completed A1.1 at Inlingua · A1.2 exam completed · Progressing toward A2</p>
+</div></section>
+
+<section id="contact"><div class="container">
+  <div class="cg">
+    <div>
+      <div class="eyebrow" style="color:#ffffff40;">05 — Contact</div>
+      <h2 class="ch2">Let's work on<br>something <em>great.</em></h2>
+      <p class="csub">Open to internships, placements, research collaborations, and hackathon teams. If you're building something meaningful in AI, reach out.</p>
+      <button type="button" class="btn btn-a" id="sendEmailButton">Send an Email →</button>
+      <div id="emailHint" class="email-hint" style="display:none;">Email copied to clipboard.</div>
+    </div>
+    <div>
+      <a href="mailto:arunarayan06@gmail.com?subject=Hello%20from%20Portfolio" class="clink"><span class="cll2">Email</span><span class="clt">arunarayan06@gmail.com</span></a>
+      <a href="https://www.linkedin.com/in/aruna-rayan06" target="_blank" class="clink"><span class="cll2">LinkedIn</span><span class="clt">linkedin.com/in/aruna-rayan06</span></a>
+      <a href="https://github.com/Aruna168" target="_blank" class="clink"><span class="cll2">GitHub</span><span class="clt">github.com/Aruna168</span></a>
+      <a href="resume.pdf" download class="clink"><span class="cll2">Resume / CV</span><span class="clt">Download PDF ↓</span></a>
+    </div>
+  </div>
+</div></section>
+
+<footer>
+  <span>© 2025 — Portfolio</span>
+  <span>CSE (AI/ML) · B.E. · 6th Semester · Coimbatore</span>
+</footer>
+
+<script>
+function toggleNav(){
+  document.querySelector('.nav-toggle').classList.toggle('open');
+  document.getElementById('drawer').classList.toggle('open');
+}
+function closeNav(){
+  document.querySelector('.nav-toggle').classList.remove('open');
+  document.getElementById('drawer').classList.remove('open');
+}
+document.addEventListener('click',e=>{
+  if(!e.target.closest('nav')&&!e.target.closest('#drawer'))closeNav();
+});
+const ro=new IntersectionObserver((entries)=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting){
+      setTimeout(()=>e.target.classList.add('vis'),i*55);
+      ro.unobserve(e.target);
+    }
+  });
+},{threshold:.07});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+const sendEmailButton = document.getElementById('sendEmailButton');
+const emailHint = document.getElementById('emailHint');
+function showEmailHint(message) {
+  if (!emailHint) return;
+  emailHint.textContent = message;
+  emailHint.style.display = 'block';
+  emailHint.style.opacity = '1';
+  clearTimeout(window.emailHintTimeout);
+  window.emailHintTimeout = setTimeout(() => {
+    if (emailHint) emailHint.style.opacity = '0';
+    setTimeout(() => {
+      if (emailHint) emailHint.style.display = 'none';
+    }, 200);
+  }, 3200);
+}
+if (sendEmailButton) {
+  sendEmailButton.addEventListener('click', () => {
+    const email = 'arunarayan06@gmail.com';
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(email)
+        .then(() => showEmailHint('Email copied to clipboard. Paste it into your email client.'))
+        .catch(() => showEmailHint(`Email: ${email}`));
+    } else {
+      showEmailHint(`Email: ${email}`);
+    }
+  });
+}
+</script>
+</body>
+</html>
